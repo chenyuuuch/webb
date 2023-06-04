@@ -29,13 +29,20 @@
         </script>
         <script>
             function updateSelectedCourses() {
-              var selectedCourses = document.querySelectorAll('input[name="course"]:checked');
-              var selectedCoursesText = Array.from(selectedCourses).map(function(course) {
-                return course.value;
-              }).join('  ');
-          
-              var selectedCoursesContainer = document.getElementById('selectedCourses');
-              selectedCoursesContainer.textContent = selectedCoursesText;
+            var selectedCourses = document.querySelectorAll('input[name="course"]:checked');
+            var selectedCoursesText = Array.from(selectedCourses).reduce(function(courses, course) {
+                var courseName = course.value;
+                var isDuplicate = courses.includes(courseName);
+
+                if (!isDuplicate) {
+                courses.push(courseName);
+                }
+
+                return courses;
+            }, []).join('  ');
+
+            var selectedCoursesContainer = document.getElementById('selectedCourses');
+            selectedCoursesContainer.textContent = selectedCoursesText;
             }
             window.onload = function() {
                 updateSelectedCourses();
@@ -89,55 +96,64 @@
                             <div id="courseContainer2" style="display: none;">
                                 <label for="courses">雙主修課程：</label>
                                 <ul id="courseList2">
-                                    <!-- 雙主修課程列表 -->
-                                </ul>
-                            </div>
-                            <div id="courseContainer3" style="display: none;">
-                                <label for="courses">輔系必修課程(應修24.0學分):</label>
-                                <ul id="courseList3-1">
-                                    <li>
-                                        <input type="checkbox" name="course" value="圖學" data-credits="3" onchange="updateSelectedCourses()"> 
-                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 圖學(3學分)
-                                    </li>
+                                    <label for="courses">雙主修必修課程(應修32):</label>
                                     <li>
                                         <input type="checkbox" name="course" value="基本設計" data-credits="3" onchange="updateSelectedCourses()"> 
-                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 基本設計(3學分)
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" name="course" value="工程設計" data-credits="3" onchange="updateSelectedCourses()"> 
-                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 工程設計(3學分)
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" name="course" value="機構設計" data-credits="3" onchange="updateSelectedCourses()"> 
-                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 機構設計(3學分)
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" name="course" value="結構設計" data-credits="3" onchange="updateSelectedCourses()"> 
-                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 結構設計(3學分)
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" name="course" value="能源與動力" data-credits="3" onchange="updateSelectedCourses()"> 
-                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 能源與動力(3學分)
+                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 基本設計(3)
                                     </li>
                                     <li>
                                         <input type="checkbox" name="course" value="電子電路" data-credits="3" onchange="updateSelectedCourses()"> 
-                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 電子電路(3學分)
+                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 電子電路(3)
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="courseContainer3" style="display: none;">
+                                <label for="courses">輔系課程：</label>
+                                <ul id="courseList3-1">                                    
+                                <label for="courses">輔系必修課程(應修24):</label>
+                                    <li>
+                                        <input type="checkbox" name="course" value="圖學" data-credits="3" onchange="updateSelectedCourses()"> 
+                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 圖學(3)
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="course" value="基本設計" data-credits="3" onchange="updateSelectedCourses()"> 
+                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 基本設計(3)
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="course" value="工程設計" data-credits="3" onchange="updateSelectedCourses()"> 
+                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 工程設計(3)
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="course" value="機構設計" data-credits="3" onchange="updateSelectedCourses()"> 
+                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 機構設計(3)
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="course" value="結構設計" data-credits="3" onchange="updateSelectedCourses()"> 
+                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 結構設計(3)
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="course" value="能源與動力" data-credits="3" onchange="updateSelectedCourses()"> 
+                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 能源與動力(3)
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="course" value="電子電路" data-credits="3" onchange="updateSelectedCourses()"> 
+                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 電子電路(3)
                                     </li>
                                     <li>
                                         <input type="checkbox" name="course" value="機電整合實務" data-credits="3" onchange="updateSelectedCourses()"> 
-                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 機電整合實務(3學分)
+                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 機電整合實務(3)
                                     </li>
                                 </ul>
                                 
-                                <label for="courses">輔系選修課程(應修2.0學分):</label>
                                 <ul id="courseList3-1">
+                                <label for="courses">輔系選修課程(應修2):</label>
                                     <li>
                                         <input type="checkbox" name="course" value="木藝大師" data-credits="2" onchange="updateSelectedCourses()"> 
-                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 木藝大師(2學分)
+                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 木藝大師(2)
                                     </li>
                                     <li>
                                         <input type="checkbox" name="course" value="工業科技教育概論" data-credits="2" onchange="updateSelectedCourses()"> 
-                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 工業科技教育概論(2學分)
+                                        <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 工業科技教育概論(2)
                                     </li>
                                 </ul>
                             </div>
@@ -152,8 +168,12 @@
                     <div class="content" id="my_credits">
                         <div id="content" class="p-4 p-md-5 pt-5">
                             <h2 class="mb-4"><u>我的學分</u></h2>
-                            <div id="selectedCourses"></div>
-                            <p>已計算學分: <span id="calculatedCredits"></span></p>
+                            <p>已收藏課程 : </p>
+                            <p><span id="selectedCourses">0</span></p><br>
+                            <p>必修學分: <span id="compulsoryCredits">0</span></p>
+                            <p>雙主修學分: <span id="doubleMajorCredits">0</span></p>
+                            <p>輔系學分: <span id="minorCredits">0</span></p>
+                            <p>教程學分: <span id="teacherTrainingCredits">0</span></p>
                             <!-- 在這裡添加顯示學分的內容 -->
                         </div>
                     </div>
@@ -189,22 +209,57 @@
         </script>
         <script>
             function calculateCredits() {
-                var calculateCheckboxes = document.querySelectorAll('input[name="calculateCredits"]:checked');
-                var calculatedCredits = Array.from(calculateCheckboxes).reduce(function(total, checkbox) {
-                    var course = checkbox.parentNode.querySelector('input[name="course"]');
-                    var credits = parseFloat(course.getAttribute('data-credits'));
-                    return total + credits;
-                }, 0);
+            // 计算雙主修课程的学分
+            var doubleMajorCheckboxes = document.querySelectorAll('div#courseContainer2 input[name="calculateCredits"]:checked');
+            var doubleMajorCredits = Array.from(doubleMajorCheckboxes).reduce(function(total, checkbox) {
+                var course = checkbox.parentNode.querySelector('input[name="course"]');
+                var credits = parseFloat(course.getAttribute('data-credits'));
+                return total + credits;
+            }, 0);
 
-                var calculatedCreditsContainer = document.getElementById('calculatedCredits');
-                calculatedCreditsContainer.textContent = calculatedCredits;
+            // 计算輔系课程的学分
+            var minorCheckboxes = document.querySelectorAll('div#courseContainer3 input[name="calculateCredits"]:checked');
+            var minorCredits = Array.from(minorCheckboxes).reduce(function(total, checkbox) {
+                var course = checkbox.parentNode.querySelector('input[name="course"]');
+                var credits = parseFloat(course.getAttribute('data-credits'));
+                return total + credits;
+            }, 0);
+
+            // 计算教程课程的学分
+            var teacherTrainingCheckboxes = document.querySelectorAll('div#courseContainer4 input[name="calculateCredits"]:checked');
+            var teacherTrainingCredits = Array.from(teacherTrainingCheckboxes).reduce(function(total, checkbox) {
+                var course = checkbox.parentNode.querySelector('input[name="course"]');
+                var credits = parseFloat(course.getAttribute('data-credits'));
+                return total + credits;
+            }, 0);
+
+            // 计算必修课程的学分
+            var compulsoryCheckboxes = document.querySelectorAll('div#courseContainer1 input[name="calculateCredits"]:checked');
+            var compulsoryCredits = Array.from(compulsoryCheckboxes).reduce(function(total, checkbox) {
+                var course = checkbox.parentNode.querySelector('input[name="course"]');
+                var credits = parseFloat(course.getAttribute('data-credits'));
+                return total + credits;
+            }, 0);
+
+            // 显示各个类型的学分
+            var doubleMajorCreditsContainer = document.getElementById('doubleMajorCredits');
+            doubleMajorCreditsContainer.textContent = doubleMajorCredits;
+
+            var minorCreditsContainer = document.getElementById('minorCredits');
+            minorCreditsContainer.textContent = minorCredits;
+
+            var teacherTrainingCreditsContainer = document.getElementById('teacherTrainingCredits');
+            teacherTrainingCreditsContainer.textContent = teacherTrainingCredits;
+
+            var compulsoryCreditsContainer = document.getElementById('compulsoryCredits');
+            compulsoryCreditsContainer.textContent = compulsoryCredits;
+        }
+
+        document.addEventListener('change', function(event) {
+            if (event.target.matches('input[name="calculateCredits"]')) {
+                calculateCredits();
             }
-
-            document.addEventListener('change', function(event) {
-                if (event.target.matches('input[name="calculateCredits"]')) {
-                    calculateCredits();
-                }
-            });
+        });
         </script>
     </body>
     </html>
