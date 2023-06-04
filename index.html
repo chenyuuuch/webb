@@ -155,5 +155,43 @@
                 document.getElementById(contentId).style.display = 'block';
             }
         </script>
+        <script>
+            function storeSelectedCourses() {
+              var selectedCourses = document.querySelectorAll('input[name="course"]:checked');
+              var selectedCourseValues = Array.from(selectedCourses).map(function(course) {
+                return course.value;
+              });
+    
+              localStorage.setItem('selectedCourses', JSON.stringify(selectedCourseValues));
+            }
+    
+            function restoreSelectedCourses() {
+              var selectedCoursesContainer = document.getElementById('selectedCourses');
+              var selectedCourseValues = localStorage.getItem('selectedCourses');
+    
+              if (selectedCourseValues) {
+                selectedCourseValues = JSON.parse(selectedCourseValues);
+                selectedCourseValues.forEach(function(courseValue) {
+                  var checkbox = document.querySelector('input[name="course"][value="' + courseValue + '"]');
+                  if (checkbox) {
+                    checkbox.checked = true;
+                  }
+                });
+    
+                updateSelectedCourses();
+              }
+            }
+    
+            window.onload = function() {
+              restoreSelectedCourses();
+            };
+    
+            document.addEventListener('change', function(event) {
+              if (event.target.matches('input[name="course"]')) {
+                storeSelectedCourses();
+                updateSelectedCourses();
+              }
+            });
+        </script>
     </body>
     </html>
