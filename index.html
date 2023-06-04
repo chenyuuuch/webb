@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>NTNU TAHRD</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            .content {
+                display: none;
+            }
+        </style>
+        <script>
+            function showHideCourses(checkboxName, containerId) {
+                var checkbox = document.getElementsByName(checkboxName)[0];
+                var container = document.getElementById(containerId);
+                
+                if (checkbox.checked) {
+                    container.style.display = 'block';
+                } else {
+                    container.style.display = 'none';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <div class="border-end bg-white" id="sidebar-wrapper">
+                <div class="sidebar-heading border-bottom bg-light">---</div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="javascript:showContent('course_structure')">課程架構查詢</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="javascript:showContent('faculty_course')">師資生課程查詢</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="javascript:showContent('my_credits')">我的學分</a>
+                </div>
+            </div>
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn btn-primary" id="sidebarToggle">三</button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    </div>
+                </nav>
+                <!-- Page content-->
+                <div class="container-fluid">
+                    <div class="content" id="course_structure">
+                        <div id="content" class="p-4 p-md-5 pt-5">
+                            <h2 class="mb-4"><u>課程架構查詢</u></h2>
+                            <label for="index" id="dropdown">科系</label>
+                            <select name="index" id="dropdown-content">
+                                <option value="tahrd">科技系</option>
+                                <option value="others">其他</option>
+                            </select>
+                            <label for="compulsory" id="choice" style="padding-right: 0px;">必選修</label>
+                            <input type="checkbox" name="compulsory" onchange="showHideCourses('compulsory', 'courseContainer1')">
+                            <label for="doubleMajor" id="choice" style="padding-right: 0px;">雙主修</label>
+                            <input type="checkbox" name="doubleMajor" onchange="showHideCourses('doubleMajor', 'courseContainer2')">
+                            <label for="minor" id="choice" style="padding-right: 0px;">輔系</label>
+                            <input type="checkbox" name="minor" onchange="showHideCourses('minor', 'courseContainer3')">
+                            <label for="teacherTraining" id="choice" style="padding-right: 0px;">師培</label>
+                            <input type="checkbox" name="teacherTraining" onchange="showHideCourses('teacherTraining', 'courseContainer4')">
+                            <div id="courseContainer1" style="display: none;">
+                                <label for="courses">必選修課程：</label>
+                                <ul id="courseList1">
+                                    <!-- 必選修課程列表 -->
+                                </ul>
+                            </div>
+                            <div id="courseContainer2" style="display: none;">
+                                <label for="courses">雙主修課程：</label>
+                                <ul id="courseList2">
+                                    <!-- 雙主修課程列表 -->
+                                </ul>
+                            </div>
+                            <div id="courseContainer3" style="display: none;">
+                                <label for="courses">輔系必修課程(應修24.0學分):</label>
+                                <ul id="courseList3-1">
+                                    <li><input type="checkbox" name="course" value="圖學"> 圖學</li>
+                                    <li><input type="checkbox" name="course" value="基本設計"> 基本設計</li>
+                                    <li><input type="checkbox" name="course" value="工程設計"> 工程設計</li>
+                                    <li><input type="checkbox" name="course" value="機構設計"> 機構設計</li>
+                                    <li><input type="checkbox" name="course" value="結構設計"> 結構設計</li>
+                                    <li><input type="checkbox" name="course" value="能源與動力"> 能源與動力</li>
+                                    <li><input type="checkbox" name="course" value="電子電路"> 電子電路</li>
+                                    <li><input type="checkbox" name="course" value="機電整合實務"> 機電整合實務</li>
+                                </ul>
+                                <label for="courses">輔系選修課程(應修2.0學分):</label>
+                                <ul id="courseList3-1">
+                                    <li><input type="checkbox" name="course" value="木藝大師"> 木藝大師</li>
+                                    <li><input type="checkbox" name="course" value="工業科技教育概論"> 工業科技教育概論</li>
+                                </ul>
+                            </div>
+                            <div id="courseContainer4" style="display: none;">
+                                <label for="courses">師培課程：</label>
+                                <ul id="courseList4">
+                                    <!-- 師培課程列表 -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script>
+            function showContent(contentId) {
+                var contents = document.getElementsByClassName('content');
+                for (var i = 0; i < contents.length; i++) {
+                    contents[i].style.display = 'none';
+                }
+                document.getElementById(contentId).style.display = 'block';
+            }
+        </script>
+    </body>
+</html>
