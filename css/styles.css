@@ -2845,19 +2845,19 @@ textarea.form-control-lg {
 
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #0d6efd;
-  --bs-btn-border-color: #0d6efd;
+  --bs-btn-bg: #dde4ef;
+  --bs-btn-border-color: #fafcfe;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #0b5ed7;
-  --bs-btn-hover-border-color: #0a58ca;
+  --bs-btn-hover-bg: #dde4ef;
+  --bs-btn-hover-border-color: #dde4ef;
   --bs-btn-focus-shadow-rgb: 49, 132, 253;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #0a58ca;
-  --bs-btn-active-border-color: #0a53be;
+  --bs-btn-active-bg: #dde4ef;
+  --bs-btn-active-border-color: #dde4ef;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #0d6efd;
-  --bs-btn-disabled-border-color: #0d6efd;
+  --bs-btn-disabled-bg: #dde4ef;
+  --bs-btn-disabled-border-color: #dde4ef;
 }
 
 .btn-secondary {
@@ -10866,8 +10866,8 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 #dropdown-content{
   background-color: #C8D8F5;
   color: black;
-  padding: 20px;
-  font-size: 16px;
+  padding: 10px;
+  font-size: 18px;
   border: none;
   cursor: pointer;
   min-width: 200px;
@@ -10875,7 +10875,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 
 #dropdown {
   color: black;
-  font-size: 20px;
+  font-size: 18px;
   padding: 20px;
 }
 #choice {
@@ -10884,6 +10884,20 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   padding: 30px;
   margin-top: 0px;
   text-align: right;
+}
+#showchoice {
+  background-color: #fff3cd;
+  color: black;
+  font-size: 17px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+#my {
+  background-color: #fff3cd;
+  color: black;
+  font-size: 18px;
+  padding: 5px;
+  margin-bottom: 20px;
 }
 
 input[type="checkbox"] {
