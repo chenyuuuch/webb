@@ -10835,7 +10835,7 @@ textarea.form-control-lg {
 }
 
 #sidebar-wrapper .sidebar-heading {
-  padding: 0.875rem 1.25rem;
+  padding: 1.73rem 1.25rem;
   font-size: 1.2rem;
 }
 
@@ -10864,19 +10864,33 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   }
 }
 #dropdown-content{
-  background-color: #C8D8F5;
+  background-color: white;
   color: black;
   padding: 10px;
   font-size: 18px;
-  border: none;
+  border-color: #C8D8F5;
   cursor: pointer;
-  min-width: 200px;
+  min-width: 150px;
 }
-
 #dropdown {
   color: black;
   font-size: 18px;
   padding: 20px;
+}
+#mydropdown {
+  color: black;
+  font-size: 18px;
+  padding-right: 20px;
+  margin-bottom: 25px;
+}
+#mydropdown-content{
+  background-color: white;
+  color: black;
+  padding: 10px;
+  font-size: 16px;
+  border-color: #C8D8F5;
+  cursor: pointer;
+  min-width: 100px;
 }
 #choice {
   color: black;
