@@ -693,6 +693,7 @@
         </script>
         <script>
             function calculateCredits() {
+            // 计算雙主修课程的学分
             var doubleMajorCheckboxes = document.querySelectorAll('div#courseContainer2 input[name="calculateCredits"]:checked');
             var doubleMajorCredits = Array.from(doubleMajorCheckboxes).reduce(function(total, checkbox) {
                 var course = checkbox.parentNode.querySelector('input[name="course"]');
@@ -700,6 +701,7 @@
                 return total + credits;
             }, 0);
 
+            // 计算輔系课程的学分
             var minorCheckboxes = document.querySelectorAll('div#courseContainer3 input[name="calculateCredits"]:checked');
             var minorCredits = Array.from(minorCheckboxes).reduce(function(total, checkbox) {
                 var course = checkbox.parentNode.querySelector('input[name="course"]');
@@ -707,6 +709,7 @@
                 return total + credits;
             }, 0);
 
+            // 计算教程课程的学分
             var teacherTrainingCheckboxes = document.querySelectorAll('div#courseContainer4 input[name="calculateCredits"]:checked');
             var teacherTrainingCredits = Array.from(teacherTrainingCheckboxes).reduce(function(total, checkbox) {
                 var course = checkbox.parentNode.querySelector('input[name="course"]');
@@ -714,6 +717,7 @@
                 return total + credits;
             }, 0);
 
+            // 计算必修课程的学分
             var compulsoryCheckboxes = document.querySelectorAll('div#courseContainer1 input[name="calculateCredits"]:checked');
             var compulsoryCredits = Array.from(compulsoryCheckboxes).reduce(function(total, checkbox) {
                 var course = checkbox.parentNode.querySelector('input[name="course"]');
@@ -728,6 +732,7 @@
                 return total + credits;
             }, 0);
 
+            // 显示各个类型的学分
             var doubleMajorCreditsContainer = document.getElementById('doubleMajorCredits');
             doubleMajorCreditsContainer.textContent = doubleMajorCredits;
 
