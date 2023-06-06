@@ -10917,5 +10917,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 input[type="checkbox"] {
   width: 18px;
   height: 18px;
+  margin-right: 7px;
+  margin-left: 7px;
 }
 

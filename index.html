@@ -88,7 +88,7 @@
                             <div id="courseContainer1" style="display: none;">
                                 <label for="courses" id="showchoice">必選修 (應修56) </label>
                                 <ul id="courseList1">
-                                    <label for="courses">系必修課程 (應修20) </label>
+                                    <label for="courses">系必修課程 (應修20) <br />收藏 已修</label>
                                     <li>
                                         <input type="checkbox" name="course" value="計算機概論" data-credits="3" onchange="updateSelectedCourses()"> 
                                         <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 計算機概論 (3)
@@ -278,7 +278,7 @@
                             <div id="courseContainer2" style="display: none;">
                                 <label for="courses" id="showchoice">雙主修 (應修46) </label>
                                 <ul id="courseList2">
-                                    <label for="courses">雙主修必修課程 (應修32) </label>
+                                    <label for="courses">雙主修必修課程 (應修32) <br />收藏 已修</label>
                                     <li>
                                         <input type="checkbox" name="course" value="基本設計" data-credits="3" onchange="updateSelectedCourses()"> 
                                         <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 基本設計 (3)
@@ -375,7 +375,7 @@
                             <div id="courseContainer3" style="display: none;">
                                 <label for="courses" id="showchoice">輔系 (應修26) </label>
                                 <ul id="courseList3-1">                                    
-                                <label for="courses">輔系必修課程 (應修24) </label>
+                                <label for="courses">輔系必修課程 (應修24) <br />收藏 已修</label>
                                     <li>
                                         <input type="checkbox" name="course" value="圖學" data-credits="3" onchange="updateSelectedCourses()"> 
                                         <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 圖學 (3)
@@ -422,7 +422,7 @@
                             <div id="courseContainer4" style="display: none;">
                                 <label for="courses" id="showchoice">師培 (應修39) </label>
                                 <ul id="courseList4">
-                                    <label for="courses">師培必修課程 (應修19) </label>
+                                    <label for="courses">師培必修課程 (應修19) <br />收藏 已修</label>
                                     <li>
                                         <input type="checkbox" name="course" value="科技系統與社會發展" data-credits="2" onchange="updateSelectedCourses()"> 
                                         <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 科技系統與社會發展 (2)
@@ -536,7 +536,7 @@
 
                             <div id="courseContainer5">
                                 <ul id="courseList5">
-                                    <label for="courses">教育基礎(至少4) </label>
+                                    <label for="courses">教育基礎(至少4) <br />收藏 已修</label>
                                     <li>
                                         <input type="checkbox" name="course" value="教育概論" data-credits="2" onchange="updateSelectedCourses()"> 
                                         <input type="checkbox" name="calculateCredits" onchange="calculateCredits()"> 教育概論 (2)
@@ -751,7 +751,6 @@
         });
         </script>
         <script>
-            // 存儲使用者選擇的課程
             function storeSelectedCourses() {
             var selectedCourses = document.querySelectorAll('input[name="course"]:checked');
             var selectedCourseValues = Array.from(selectedCourses).map(function (course) {
@@ -761,7 +760,6 @@
             localStorage.setItem('selectedCourses', JSON.stringify(selectedCourseValues));
             }
 
-            // 恢復使用者選擇的課程
             function restoreSelectedCourses() {
             var selectedCourseValues = localStorage.getItem('selectedCourses');
 
@@ -778,12 +776,10 @@
             }
             }
 
-            // 在頁面加載完成後恢復使用者選擇的課程
             window.onload = function () {
             restoreSelectedCourses();
             };
 
-            // 在使用者選擇課程時調用存儲函數
             document.addEventListener('change', function (event) {
             if (event.target.matches('input[name="course"]')) {
                 storeSelectedCourses();
